@@ -1,25 +1,18 @@
-// ./pages/index.js
-import React, { useState } from "react";
-import Modal from "../components/Modal";
+"use client"
+import { useState } from 'react';
+import Modal from '../components/Modal';
 
 const HomePage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={() => setModalOpen(true)}>Open Modal</button>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
         <h2>This is a Modal</h2>
         <p>Using React Portals with Next.js</p>
+        <button onClick={() => setModalOpen(false)}>Close Modal</button>
       </Modal>
     </div>
   );
